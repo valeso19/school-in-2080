@@ -1,0 +1,200 @@
+.scene-person {
+  position: absolute;
+  bottom: 5px;
+  width: 34px;
+  height: 52px;
+  flex: 0 0 auto;
+  overflow: visible;
+  fill: #2867b5;
+  stroke: #1f5598;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.scene-person.kid-one {
+  left: 37%;
+}
+
+.scene-person.kid-two {
+  left: 48%;
+  fill: #438fd1;
+  stroke: #2f73b5;
+  transform: scale(0.88);
+  transform-origin: bottom center;
+}
+
+.main-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+}
+
+.brand .teacher-name {
+  margin-top: 2px;
+  color: #456a9d;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.hero-art {
+  overflow: hidden;
+  background: linear-gradient(180deg, #c7efff, #eaf8fa 70%, #c8e3e8);
+  animation: none;
+  transform: none;
+}
+
+.classroom-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.animated-robot {
+  position: absolute;
+  left: 58%;
+  bottom: 155px;
+  width: min(74%, 430px);
+  height: auto;
+  overflow: visible;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 15px 12px #356f961c);
+}
+
+.robot-head {
+  transform-box: fill-box;
+  transform-origin: 50% 88%;
+  animation: robot-head-turn 5.5s ease-in-out infinite;
+}
+
+.robot-wave-arm {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: robot-arm-wave 2.8s ease-in-out infinite;
+}
+
+.robot-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: robot-blink 5.2s ease-in-out infinite;
+}
+
+.robot-mouth {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.stage.is-speaking .robot-head {
+  animation-duration: 2.2s;
+}
+
+.stage.is-speaking .robot-wave-arm {
+  animation-duration: 1.5s;
+}
+
+.stage.is-speaking .robot-mouth {
+  opacity: 1;
+  transform: scaleY(1.3);
+}
+
+.stage.is-speaking .robot-smile {
+  opacity: 0;
+}
+
+.stage.is-speaking .sound-bars i {
+  animation: sound-wave 0.7s ease-in-out infinite alternate;
+}
+
+.stage.is-speaking .sound-bars i:nth-child(2n) {
+  animation-delay: 0.2s;
+}
+
+@keyframes robot-head-turn {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes robot-arm-wave {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  50% {
+    rotate: -7deg;
+  }
+}
+
+@keyframes robot-blink {
+  0%,
+  91%,
+  100% {
+    transform: scaleY(1);
+  }
+  94%,
+  97% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes sound-wave {
+  to {
+    transform: scaleY(1.8);
+  }
+}
+
+.conversation {
+  grid-column: auto;
+}
+
+@media (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chat-log {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .answer-art {
+    grid-column: 1;
+  }
+
+  .animated-robot {
+    left: 50%;
+    bottom: 250px;
+    width: min(82%, 330px);
+  }
+
+  .brand .teacher-name {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot-head,
+  .robot-wave-arm,
+  .robot-eye,
+  .stage.is-speaking .sound-bars i {
+    animation: none;
+  }
+
+  .robot-mouth {
+    transition: none;
+  }
+
+  .stage.is-speaking .robot-mouth {
+    opacity: 1;
+  }
+}
